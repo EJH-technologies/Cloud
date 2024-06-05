@@ -1,3 +1,0 @@
-Email: emailishere@email.com
-File Path: APIFilePath
-Number: 123456789

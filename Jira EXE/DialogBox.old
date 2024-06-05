@@ -2,9 +2,8 @@ import tkinter as tk
 from tkinter import filedialog
 from datetime import datetime
 import os
-import tempfile
 
-def submit_values():
+def submit_values(event=None):
     email = email_entry.get()
     file_path = file_path_entry.get()
     number = number_entry.get()
@@ -12,10 +11,12 @@ def submit_values():
     # Get the current timestamp
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    # Create a temporary directory for storing the log file
-    with tempfile.TemporaryDirectory() as temp_dir:
-        log_file_path = os.path.join(temp_dir, "input_log.txt")
-        input_file_path = os.path.join(temp_dir, "input_values.txt")
+    # Specify temp directory path
+    save_directory = "C:\\Temp\\"
+
+    # Create file paths
+    log_file_path = os.path.join(save_directory, "input_log.txt")
+    input_file_path = os.path.join(save_directory, "input_values.txt")
 
     # Get the directory path of the executable
     # exe_directory = os.path.dirname(os.path.abspath(__file__))
@@ -83,6 +84,9 @@ number_entry.grid(row=2, column=1, padx=5, pady=5)
 
 submit_button = tk.Button(window, text="Create User", command=submit_values, font=button_font)
 submit_button.grid(row=3, column=1, padx=5, pady=5)
+
+# Bind 'Enter' key to submit_values function
+window.bind('<Return>', lambda event: submit_values())
 
 # Start the Tkinter event loop
 window.mainloop()
