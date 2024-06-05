@@ -1,4 +1,0 @@
-Timestamp: 2024-06-05 10:45:54
-Email: 1045@email.com
-Number: 1045
----
